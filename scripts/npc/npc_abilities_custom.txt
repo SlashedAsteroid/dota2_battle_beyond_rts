@@ -3,47 +3,68 @@
 {
 	"Version"		"1"
 
-	//=================================================================================================================
-	// Templar Assassin: Refraction Holdout
-	//=================================================================================================================
-	"templar_assassin_refraction_holdout"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"17.0 17.0 17.0 17.0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_absorb"				"200 300 400 500"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_damage"				"20 40 60 80"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"17.0 17.0 17.0 17.0"
-			}
-		}
-	}
+    "battlebeyond_ability_building_auto_root"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "MaxLevel"                      "1"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        
+        "Modifiers"
+        {
+            "battlebeyond_modifier_auto_root"
+            {
+                "Passive"                       "1"
+                "IsHidden"                      "1"
+                "Attribute"                     "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+                
+                "States"
+                {
+                    "MODIFIER_STATE_ROOTED"                     "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+        }
+    }
+    "battlebeyond_ability_unit_create_settlement"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_building"
+        "MaxLevel"                      "1"
+        
+        "AbilityCastPoint"              ".0"
+        "AbilityChannelTime"            "3"
+        "AbilityBehavior"              "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_createBuilding"
+                "unitType"                          "building_village"
+            }
+        }
+    }
+    "battlebeyond_ability_unit_create_settler"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_settler"
+        "MaxLevel"                      "1"
+        
+        "AbilityGoldCost"               "100"
+        "AbilityCastPoint"              ".0"
+        "AbilityChannelTime"            "3"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_createUnit"
+                "unitType"                          "battlebeyond_unit_settler"
+            }
+        }
+    }
 }
