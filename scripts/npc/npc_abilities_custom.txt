@@ -45,6 +45,29 @@
             }
         }
     }
+    "battlebeyond_ability_unit_create_barracks"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_building"
+        "MaxLevel"                      "1"
+        
+        "AbilityCastPoint"              ".0"
+        "AbilityCastRange"              "500"
+        "AbilityChannelTime"            "3"
+        "AbilityBehavior"              "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_createBuilding"
+                "unitType"                          "building_barracks"
+                "Target"                            "POINT"
+            }
+        }
+    }
     "battlebeyond_ability_unit_create_settler"
     {
         "BaseClass"                     "ability_datadriven"
@@ -64,6 +87,28 @@
                 "ScriptFile"                        "buildings/init.lua"
                 "Function"                          "BattleBeyond_createUnit"
                 "unitType"                          "battlebeyond_unit_settler"
+            }
+        }
+    }
+    "battlebeyond_ability_unit_create_worker"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_worker"
+        "MaxLevel"                      "1"
+        
+        "AbilityGoldCost"               "25"
+        "AbilityCastPoint"              ".0"
+        "AbilityChannelTime"            "3"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_createUnit"
+                "unitType"                          "battlebeyond_unit_worker"
             }
         }
     }

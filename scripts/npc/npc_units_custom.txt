@@ -5,6 +5,7 @@
     {
         "BaseClass"                     "npc_dota_building"
         "Model"                         "models/props_structures/good_base_wall006.vmdl"
+        "ModelScale"                    ".0"
         "Level"                         "1"
         "HealthBarOffset"               "180"
         
@@ -38,6 +39,43 @@
         "HealthBarOffset"               "140"
 		
         "Ability1"                      "battlebeyond_ability_unit_create_settlement"
+        "Ability2"                      "battlebeyond_ability_unit_create_barracks"
+		
+        "ArmorPhysical"                 "0"
+
+        "AttackCapabilities"            "DOTA_UNIT_CAP_NO_ATTACK"
+		
+        "BoundsHullName"                "DOTA_HULL_SIZE_HERO"
+        "RingRadius"                    "40"
+        "CollisionSize"                 "32"
+		
+        "MovementCapabilities"          "DOTA_UNIT_CAP_MOVE_GROUND"
+        "MovementSpeed"                 "190"
+        "MovementTurnRate"              "0.4"
+		
+        "StatusHealth"                  "140"
+        "StatusHealthRegen"             "0.5"
+        "StatusMana"                    "0"
+        "StatusManaRegen"               "0"
+		
+        "VisionDaytimeRange"            "800"
+        "VisionNighttimeRange"          "500"
+		
+        "TeamName"                      "DOTA_TEAM_NEUTRALS"
+        "CombatClassAttack"             "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"             "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+        "UnitRelationShipClass"         "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+    }
+    "battlebeyond_unit_worker"
+    {
+        "BaseClass"                     "npc_dota_creature"
+        "Model"                         "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl"
+        "ModelScale"                    ".7"
+        "Level"                         "1"
+        "HealthBarOffset"               "140"
+		
+        "Ability1"                      "battlebeyond_ability_unit_create_settlement"
+        "Ability2"                      "battlebeyond_ability_unit_create_barracks"
 		
         "ArmorPhysical"                 "0"
 

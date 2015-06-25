@@ -3,7 +3,14 @@ BattleBeyond_unitTypes = {}
 BattleBeyond_unitTypes['building_village'] = {}
 BattleBeyond_unitTypes['building_village']['model'] = "models/props_structures/good_ancient001.vmdl"
 BattleBeyond_unitTypes['building_village']['model_scale'] = 0.6
+BattleBeyond_unitTypes['building_village']['collision_hull'] = 160
 BattleBeyond_unitTypes['building_village']['abilities'] = { "battlebeyond_ability_unit_create_settler" }
+
+BattleBeyond_unitTypes['building_barracks'] = {}
+BattleBeyond_unitTypes['building_barracks']['model'] = "models/props_structures/good_barracks_melee001.vmdl"
+BattleBeyond_unitTypes['building_barracks']['model_scale'] = 0.6
+BattleBeyond_unitTypes['building_barracks']['collision_hull'] = 140
+BattleBeyond_unitTypes['building_barracks']['abilities'] = { "battlebeyond_ability_unit_create_settler", "battlebeyond_ability_unit_create_worker" }
 
 --function BattleBeyond_createunitType( unit_name, unit_model, unit_model_scale, unit_abilities )
 --    BattleBeyond_unitTypes[unit_name] = {}
@@ -29,6 +36,7 @@ function BattleBeyond_createBuilding( event )
     building:SetOwner( player:GetAssignedHero() )
     building:SetControllableByPlayer( player:GetPlayerID(), true )
     building:SetAbsOrigin( origin )
+    building:SetHullRadius( BattleBeyond_unitTypes[unitType]['collision_hull'] )
     Timers:CreateTimer(0.01, function()
             building:SetModel( BattleBeyond_unitTypes[unitType]['model'] )
             building:SetModelScale( BattleBeyond_unitTypes[unitType]['model_scale'] )
