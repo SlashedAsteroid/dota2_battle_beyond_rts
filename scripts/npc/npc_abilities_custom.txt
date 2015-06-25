@@ -76,17 +76,41 @@
         
         "AbilityGoldCost"               "100"
         "AbilityCastPoint"              ".0"
-        "AbilityChannelTime"            "3"
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
         "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
         
-        "OnChannelSucceeded"
+        "OnSpellStart"
         {
+            "ApplyModifier"
+            {
+                "ModifierName"                      "battlebeyond_modifier_unit_create_settler"
+                "Target"                            "CASTER"
+            }
             "RunScript"
             {
                 "ScriptFile"                        "buildings/init.lua"
-                "Function"                          "BattleBeyond_createUnit"
+                "Function"                          "BattleBeyond_updateModifier"
+                "Type"                              "battlebeyond_event_increase_stack"
+                "Modifier"                          "battlebeyond_modifier_unit_create_settler"
                 "unitType"                          "battlebeyond_unit_settler"
+            }
+        }
+        "Modifiers"
+        {
+            "battlebeyond_modifier_unit_create_settler"
+            {
+                "Attribute"                         "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "ThinkInterval"                     "5"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                            "buildings/init.lua"
+                        "Function"                              "BattleBeyond_updateModifier"
+                        "Modifier"                              "battlebeyond_modifier_unit_create_settler"
+                        "unitType"                              "battlebeyond_unit_settler"
+                    }
+                }
             }
         }
     }
@@ -96,19 +120,43 @@
         "AbilityTextureName"            "battlebeyond_ability_unit_create_worker"
         "MaxLevel"                      "1"
         
-        "AbilityGoldCost"               "25"
+        "AbilityGoldCost"               "100"
         "AbilityCastPoint"              ".0"
-        "AbilityChannelTime"            "3"
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
         "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
         
-        "OnChannelSucceeded"
+        "OnSpellStart"
         {
+            "ApplyModifier"
+            {
+                "ModifierName"                      "battlebeyond_modifier_unit_create_worker"
+                "Target"                            "CASTER"
+            }
             "RunScript"
             {
                 "ScriptFile"                        "buildings/init.lua"
-                "Function"                          "BattleBeyond_createUnit"
+                "Function"                          "BattleBeyond_updateModifier"
+                "Type"                              "battlebeyond_event_increase_stack"
+                "Modifier"                          "battlebeyond_modifier_unit_create_worker"
                 "unitType"                          "battlebeyond_unit_worker"
+            }
+        }
+        "Modifiers"
+        {
+            "battlebeyond_modifier_unit_create_worker"
+            {
+                "Attribute"                         "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "ThinkInterval"                     "5"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                            "buildings/init.lua"
+                        "Function"                              "BattleBeyond_updateModifier"
+                        "Modifier"                              "battlebeyond_modifier_unit_create_worker"
+                        "unitType"                              "battlebeyond_unit_worker"
+                    }
+                }
             }
         }
     }
