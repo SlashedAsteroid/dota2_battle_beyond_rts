@@ -4,6 +4,7 @@ require( 'gamemode' )
 function Precache( context )
     PrecacheResource( "model_folder", "models/props_structures", context )
     PrecacheResource( "model_folder", "models/creeps/lane_creeps/creep_radiant_ranged", context )
+    PrecacheResource( "model_folder", "models/particle", context )
 end
 
 function Activate()

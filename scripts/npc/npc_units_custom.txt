@@ -39,7 +39,6 @@
         "HealthBarOffset"               "140"
 		
         "Ability1"                      "battlebeyond_ability_unit_create_settlement"
-        "Ability2"                      "battlebeyond_ability_unit_create_barracks"
 		
         "ArmorPhysical"                 "0"
 
@@ -74,8 +73,8 @@
         "Level"                         "1"
         "HealthBarOffset"               "140"
 		
-        "Ability1"                      "battlebeyond_ability_unit_create_settlement"
-        "Ability2"                      "battlebeyond_ability_unit_create_barracks"
+        "Ability1"                      "battlebeyond_ability_unit_create_barracks"
+        "Ability2"                      "battlebeyond_ability_unit_create_armory"
 		
         "ArmorPhysical"                 "0"
 
