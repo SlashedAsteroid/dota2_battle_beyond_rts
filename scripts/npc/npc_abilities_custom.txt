@@ -123,6 +123,40 @@
             }
         }
     }
+    "battlebeyond_ability_unit_create_seige_workshop"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_seige_workshop"
+        "MaxLevel"                      "1"
+        
+        "AbilityGoldCost"               "125"
+        "AbilityCastPoint"              ".0"
+        "AbilityCastRange"              "500"
+        "AbilityChannelTime"            "3"
+        "AbilityBehavior"              "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_checkArea"
+                "unitType"                          "building_seige_workshop"
+                "Target"                            "POINT"
+            }
+        }
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_createBuilding"
+                "unitType"                          "building_seige_workshop"
+                "Target"                            "POINT"
+            }
+        }
+    }
     "battlebeyond_ability_unit_create_settler"
     {
         "BaseClass"                     "ability_datadriven"
@@ -210,6 +244,98 @@
                         "Function"                              "BattleBeyond_updateModifier"
                         "Modifier"                              "battlebeyond_modifier_unit_create_worker"
                         "unitType"                              "battlebeyond_unit_worker"
+                    }
+                }
+            }
+        }
+    }
+    "battlebeyond_ability_unit_create_swordsman"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_swordsman"
+        "MaxLevel"                      "1"
+        
+        "AbilityGoldCost"               "40"
+        "AbilityCastPoint"              ".0"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"                      "battlebeyond_modifier_unit_create_swordsman"
+                "Target"                            "CASTER"
+            }
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_updateModifier"
+                "Type"                              "battlebeyond_event_increase_stack"
+                "Modifier"                          "battlebeyond_modifier_unit_create_swordsman"
+                "unitType"                          "battlebeyond_unit_swordsman"
+            }
+        }
+        "Modifiers"
+        {
+            "battlebeyond_modifier_unit_create_swordsman"
+            {
+                "Attribute"                         "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "ThinkInterval"                     "5"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                            "buildings/init.lua"
+                        "Function"                              "BattleBeyond_updateModifier"
+                        "Modifier"                              "battlebeyond_modifier_unit_create_swordsman"
+                        "unitType"                              "battlebeyond_unit_swordsman"
+                    }
+                }
+            }
+        }
+    }
+    "battlebeyond_ability_unit_create_archer"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_archer"
+        "MaxLevel"                      "1"
+        
+        "AbilityGoldCost"               "40"
+        "AbilityCastPoint"              ".0"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"                      "battlebeyond_modifier_unit_create_archer"
+                "Target"                            "CASTER"
+            }
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_updateModifier"
+                "Type"                              "battlebeyond_event_increase_stack"
+                "Modifier"                          "battlebeyond_modifier_unit_create_archer"
+                "unitType"                          "battlebeyond_unit_swordsman"
+            }
+        }
+        "Modifiers"
+        {
+            "battlebeyond_modifier_unit_create_archer"
+            {
+                "Attribute"                         "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "ThinkInterval"                     "5"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                            "buildings/init.lua"
+                        "Function"                              "BattleBeyond_updateModifier"
+                        "Modifier"                              "battlebeyond_modifier_unit_create_archer"
+                        "unitType"                              "battlebeyond_unit_archer"
                     }
                 }
             }
@@ -371,6 +497,166 @@
                 "Properties"
                 {
                     "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		              "9"
+                }
+            }
+        }
+    }
+    "battlebeyond_ability_aura_weapon_upgrade_1"
+    {
+        "BaseClass"                                 "ability_datadriven"
+        "AbilityTextureName"                        "battlebeyond_ability_aura_weapon_upgrade_1"
+        "MaxLevel"                                  "1"
+        
+        "AbilityGoldCost"                           "100"
+        "AbilityCastPoint"                          ".0"
+        "AbilityChannelTime"                        "5"
+        "AbilityBehavior"                           "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        
+        "OnChannelSucceeded"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"                              "battlebeyond_ability_modifier_weapon_upgrade_1"
+                "Target"                                    "CASTER"
+            }
+            "RunScript"
+            {
+                "ScriptFile"                                "buildings/armory/init.lua"
+                "Function"                                  "BattleBeyond_setUpgradeAura"
+                "ReplacementAbility"                        "battlebeyond_ability_aura_weapon_upgrade_2"
+            }
+        }
+        "Modifiers"
+        {
+            "battlebeyond_ability_modifier_weapon_upgrade_1"
+            {
+                "Passive"                                   "0"
+                "TextureName"                               "spellicon"
+                
+                "IsDebuff"                                  "0"
+                "IsHidden"                                  "0"
+                
+                "Aura"                                      "battlebeyond_ability_aura_weapon_upgrade_1"
+                "Aura_Radius"                               "10000"
+                "Aura_Teams"					            "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"					            "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_ApplyToCaster"			            "0"
+            }
+            "battlebeyond_ability_aura_weapon_upgrade_1"
+            {
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		         "20"
+                }
+            }
+        }
+    }
+    "battlebeyond_ability_aura_weapon_upgrade_2"
+    {
+        "BaseClass"                                 "ability_datadriven"
+        "AbilityTextureName"                        "battlebeyond_ability_aura_weapon_upgrade_2"
+        "MaxLevel"                                  "1"
+        
+        "AbilityGoldCost"                           "100"
+        "AbilityCastPoint"                          ".0"
+        "AbilityChannelTime"                        "5"
+        "AbilityBehavior"                           "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        
+        "OnChannelSucceeded"
+        {
+            "RemoveModifier"
+            {
+                "ModifierName"                              "battlebeyond_ability_modifier_weapon_upgrade_1"
+                "Target"                                    "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName"                              "battlebeyond_ability_modifier_weapon_upgrade_2"
+                "Target"                                    "CASTER"
+            }
+            "RunScript"
+            {
+                "ScriptFile"                                "buildings/armory/init.lua"
+                "Function"                                  "BattleBeyond_setUpgradeAura"
+                "ReplacementAbility"                        "battlebeyond_ability_aura_weapon_upgrade_3"
+            }
+        }
+        "Modifiers"
+        {
+            "battlebeyond_ability_modifier_weapon_upgrade_2"
+            {
+                "Passive"                                   "0"
+                "TextureName"                               "spellicon"
+                
+                "IsDebuff"                                  "0"
+                "IsHidden"                                  "0"
+                
+                "Aura"                                      "battlebeyond_ability_aura_weapon_upgrade_2"
+                "Aura_Radius"                               "10000"
+                "Aura_Teams"					            "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"					            "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_ApplyToCaster"			            "0"
+            }
+            "battlebeyond_ability_aura_weapon_upgrade_2"
+            {
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		         "40"
+                }
+            }
+        }
+    }
+    "battlebeyond_ability_aura_weapon_upgrade_3"
+    {
+        "BaseClass"                                 "ability_datadriven"
+        "AbilityTextureName"                        "battlebeyond_ability_aura_weapon_upgrade_3"
+        "MaxLevel"                                  "1"
+        
+        "AbilityGoldCost"                           "100"
+        "AbilityCastPoint"                          ".0"
+        "AbilityChannelTime"                        "5"
+        "AbilityBehavior"                           "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        
+        "OnChannelSucceeded"
+        {
+            "RemoveModifier"
+            {
+                "ModifierName"                              "battlebeyond_ability_modifier_weapon_upgrade_2"
+                "Target"                                    "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName"                              "battlebeyond_ability_modifier_weapon_upgrade_3"
+                "Target"                                    "CASTER"
+            }
+            "RunScript"
+            {
+                "ScriptFile"                                "buildings/armory/init.lua"
+                "Function"                                  "BattleBeyond_setUpgradeAura"
+                "Disable"                                   "1"
+            }
+        }
+        "Modifiers"
+        {
+            "battlebeyond_ability_modifier_weapon_upgrade_3"
+            {
+                "Passive"                                   "0"
+                "TextureName"                               "spellicon"
+                
+                "IsDebuff"                                  "0"
+                "IsHidden"                                  "0"
+                
+                "Aura"                                      "battlebeyond_ability_aura_weapon_upgrade_3"
+                "Aura_Radius"                               "10000"
+                "Aura_Teams"					            "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"					            "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_ApplyToCaster"			            "0"
+            }
+            "battlebeyond_ability_aura_weapon_upgrade_3"
+            {
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		         "60"
                 }
             }
         }

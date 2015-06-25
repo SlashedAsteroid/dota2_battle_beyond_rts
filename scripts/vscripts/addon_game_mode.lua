@@ -5,6 +5,9 @@ function Precache( context )
     PrecacheResource( "model_folder", "models/props_structures", context )
     PrecacheResource( "model_folder", "models/creeps/lane_creeps/creep_radiant_ranged", context )
     PrecacheResource( "model_folder", "models/particle", context )
+    PrecacheResource( "model_folder", "models/heroes/dragon_knight", context )
+    PrecacheResource( "model_folder", "models/heroes/windrunner", context )
+    
 end
 
 function Activate()

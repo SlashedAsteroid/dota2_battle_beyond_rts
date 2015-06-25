@@ -75,6 +75,7 @@
 		
         "Ability1"                      "battlebeyond_ability_unit_create_barracks"
         "Ability2"                      "battlebeyond_ability_unit_create_armory"
+        "Ability3"                      "battlebeyond_ability_unit_create_seige_workshop"
 		
         "ArmorPhysical"                 "0"
 
@@ -101,4 +102,120 @@
         "CombatClassDefend"             "DOTA_COMBAT_CLASS_DEFEND_BASIC"
         "UnitRelationShipClass"         "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
     }
+    "battlebeyond_unit_swordsman"
+    {
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/dragon_knight/dragon_knight.vmdl"
+		"ModelScale"				".5"
+		"Level"						"1"
+		"HealthBarOffset"			"140"
+		
+		"SelectionGroup"			"npc_battlebeyond_swordsman"
+		"SoundSet"					"Hero_DragonKnight"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+		
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"10.0"
+		"AttackDamageMax"			"14.0"
+		"AttackRate"				"1.8"
+		"AttackAnimationPoint"		"0.9"
+		"AttackAcquisitionRange"	"700"
+		"AttackRange"				"90"
+		
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+		"CollisionSize"				"32"
+		
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"220"
+		"MovementTurnRate"			"0.4"
+		
+		"StatusHealth"				"310"
+		"StatusHealthRegen"			"0.3"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		
+		"VisionDaytimeRange"		"600"
+		"VisionNighttimeRange"		"400"
+		
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		"Creature"
+		{
+			"DisableClumpingBehavior"	"1"
+			"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"63"		}
+				"Wearable2"		{	"ItemDef"		"64"		}
+				"Wearable3" 	{	"ItemDef"		"65"		}
+				"Wearable4"		{	"ItemDef"		"66"		}
+				"Wearable5"		{	"ItemDef"		"67"		}
+				"Wearable6"		{	"ItemDef"		"68"		}
+			}
+		}
+	}
+    "battlebeyond_unit_archer"
+    {
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/windrunner/windrunner.vmdl"
+		"ModelScale"				".5"
+		"Level"						"1"
+		"HealthBarOffset"			"140"
+		
+		"SelectionGroup"			"npc_battlebeyond_swordsman"
+		"SoundSet"					"Hero_DragonKnight"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+		
+		"ArmorPhysical"				"0"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"10.0"
+		"AttackDamageMax"			"14.0"
+		"AttackRate"				"1.8"
+		"AttackAnimationPoint"		"0.9"
+		"AttackAcquisitionRange"	"700"
+		"AttackRange"				"90"
+		
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+		"CollisionSize"				"32"
+		
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"220"
+		"MovementTurnRate"			"0.4"
+		
+		"StatusHealth"				"310"
+		"StatusHealthRegen"			"0.3"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		
+		"VisionDaytimeRange"		"600"
+		"VisionNighttimeRange"		"400"
+		
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		"Creature"
+		{
+			"DisableClumpingBehavior"	"1"
+			"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"63"		}
+				"Wearable2"		{	"ItemDef"		"64"		}
+				"Wearable3" 	{	"ItemDef"		"65"		}
+				"Wearable4"		{	"ItemDef"		"66"		}
+				"Wearable5"		{	"ItemDef"		"67"		}
+				"Wearable6"		{	"ItemDef"		"68"		}
+			}
+		}
+	}
 }
