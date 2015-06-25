@@ -21,7 +21,7 @@ BattleBeyond_unitTypes['building_armory']['abilities'] = { "battlebeyond_ability
 BattleBeyond_unitTypes['building_seige_workshop'] = {}
 BattleBeyond_unitTypes['building_seige_workshop']['model'] = "models/props_structures/good_barracks_ranged001.vmdl"
 BattleBeyond_unitTypes['building_seige_workshop']['model_scale'] = 0.6
-BattleBeyond_unitTypes['building_seige_workshop']['collision_hull'] = 80
+BattleBeyond_unitTypes['building_seige_workshop']['collision_hull'] = 140
 BattleBeyond_unitTypes['building_seige_workshop']['abilities'] = { "battlebeyond_ability_aura_armor_upgrade_1","battlebeyond_ability_aura_weapon_upgrade_1" }
 
 --function BattleBeyond_createunitType( unit_name, unit_model, unit_model_scale, unit_abilities )
