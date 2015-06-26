@@ -4,31 +4,41 @@ BattleBeyond_unitTypes['building_village'] = {}
 BattleBeyond_unitTypes['building_village']['model'] = "models/props_structures/good_ancient001.vmdl"
 BattleBeyond_unitTypes['building_village']['model_scale'] = 0.6
 BattleBeyond_unitTypes['building_village']['collision_hull'] = 170
+BattleBeyond_unitTypes['building_village']['max_hp'] = 1800
 BattleBeyond_unitTypes['building_village']['abilities'] = { "battlebeyond_ability_unit_create_settler", "battlebeyond_ability_unit_create_worker"  }
+BattleBeyond_unitTypes['building_village']['items'] = { "item_battlebeyond_rally_point" }
 
 BattleBeyond_unitTypes['building_barracks'] = {}
 BattleBeyond_unitTypes['building_barracks']['model'] = "models/props_structures/good_barracks_melee001.vmdl"
 BattleBeyond_unitTypes['building_barracks']['model_scale'] = 0.6
 BattleBeyond_unitTypes['building_barracks']['collision_hull'] = 140
+BattleBeyond_unitTypes['building_barracks']['max_hp'] = 1000
 BattleBeyond_unitTypes['building_barracks']['abilities'] = { "battlebeyond_ability_unit_create_worker", "battlebeyond_ability_unit_create_swordsman", "battlebeyond_ability_unit_create_archer" }
+BattleBeyond_unitTypes['building_barracks']['items'] = { "item_battlebeyond_rally_point" }
 
 BattleBeyond_unitTypes['building_armory'] = {}
 BattleBeyond_unitTypes['building_armory']['model'] = "models/props_structures/good_statue008.vmdl"
 BattleBeyond_unitTypes['building_armory']['model_scale'] = 0.6
 BattleBeyond_unitTypes['building_armory']['collision_hull'] = 80
+BattleBeyond_unitTypes['building_armory']['max_hp'] = 1200
 BattleBeyond_unitTypes['building_armory']['abilities'] = { "battlebeyond_ability_aura_armor_upgrade_1","battlebeyond_ability_aura_weapon_upgrade_1" }
+BattleBeyond_unitTypes['building_armory']['items'] = {}
 
 BattleBeyond_unitTypes['building_seige_workshop'] = {}
 BattleBeyond_unitTypes['building_seige_workshop']['model'] = "models/props_structures/good_barracks_ranged001.vmdl"
 BattleBeyond_unitTypes['building_seige_workshop']['model_scale'] = 0.6
 BattleBeyond_unitTypes['building_seige_workshop']['collision_hull'] = 140
-BattleBeyond_unitTypes['building_seige_workshop']['abilities'] = { "battlebeyond_ability_aura_armor_upgrade_1","battlebeyond_ability_aura_weapon_upgrade_1" }
+BattleBeyond_unitTypes['building_seige_workshop']['max_hp'] = 1200
+BattleBeyond_unitTypes['building_seige_workshop']['abilities'] = { }
+BattleBeyond_unitTypes['building_seige_workshop']['items'] = { "item_battlebeyond_rally_point" }
 
---function BattleBeyond_createunitType( unit_name, unit_model, unit_model_scale, unit_abilities )
---    BattleBeyond_unitTypes[unit_name] = {}
---    table.insert( BattleBeyond_unitTypes[unit_name], { model = unit_model, model_scale = unit_model_scale, abilities = unit_abilities } )
---end
---BattleBeyond_createunitType( "building_village", "models/props_structures/good_ancient001.vmdl", 0.6, { "battlebeyond_ability_unit_create_settler" }  )
+BattleBeyond_unitTypes['building_gold_mine'] = {}
+BattleBeyond_unitTypes['building_gold_mine']['model'] = "models/props_structures/good_statue010.vmdl"
+BattleBeyond_unitTypes['building_gold_mine']['model_scale'] = 0.7
+BattleBeyond_unitTypes['building_gold_mine']['collision_hull'] = 80
+BattleBeyond_unitTypes['building_gold_mine']['max_hp'] = 700
+BattleBeyond_unitTypes['building_gold_mine']['abilities'] = { "battlebeyond_ability_generate_gold" }
+BattleBeyond_unitTypes['building_gold_mine']['items'] = {}
 
 function BattleBeyond_createBuilding( event )
     local caster = event.caster
@@ -44,13 +54,16 @@ function BattleBeyond_createBuilding( event )
     building:SetAbsOrigin( origin )
     building:SetHullRadius( BattleBeyond_unitTypes[unitType]['collision_hull'] )
     building.Type = unitType
-    building.Model = BattleBeyond_unitTypes[unitType]['model']
     Timers:CreateTimer(0.01, function()
             building:SetModel( BattleBeyond_unitTypes[unitType]['model'] )
             building:SetModelScale( BattleBeyond_unitTypes[unitType]['model_scale'] )
+            building:SetOriginalModel( BattleBeyond_unitTypes[unitType]['model'] )
+            building:SetHealth( BattleBeyond_unitTypes[unitType]['max_hp'] )
             BattleBeyond_assignBuildingAbilities( building, unitType )
     end )
-    building:AddItemByName( "item_battlebeyond_rally_point" )
+    for _, v in pairs( BattleBeyond_unitTypes[unitType]['items'] ) do
+        building:AddItemByName( v )
+    end
     if ( unitType == 'building_village' ) then
         caster:Destroy()
     end
@@ -130,7 +143,6 @@ function BattleBeyond_updateModifier( event )
             caster:RemoveModifierByName( modifier_name )
         end
     end
-    caster:SetModel( caster.Model )
 end
 
 function BattleBeyond_setBuildingRallyPoint( event )

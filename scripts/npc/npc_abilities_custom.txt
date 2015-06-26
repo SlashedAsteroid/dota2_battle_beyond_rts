@@ -157,6 +157,40 @@
             }
         }
     }
+    "battlebeyond_ability_unit_create_gold_mine"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityTextureName"            "battlebeyond_ability_unit_create_seige_workshop"
+        "MaxLevel"                      "1"
+        
+        "AbilityGoldCost"               "125"
+        "AbilityCastPoint"              ".0"
+        "AbilityCastRange"              "500"
+        "AbilityChannelTime"            "3"
+        "AbilityBehavior"              "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC"
+        
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_checkArea"
+                "unitType"                          "building_gold_mine"
+                "Target"                            "POINT"
+            }
+        }
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"                        "buildings/init.lua"
+                "Function"                          "BattleBeyond_createBuilding"
+                "unitType"                          "building_gold_mine"
+                "Target"                            "POINT"
+            }
+        }
+    }
     "battlebeyond_ability_unit_create_settler"
     {
         "BaseClass"                     "ability_datadriven"
@@ -657,6 +691,32 @@
                 "Properties"
                 {
                     "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		         "60"
+                }
+            }
+        }
+    }
+    "battlebeyond_ability_generate_gold"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "MaxLevel"                      "1"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        
+        "Modifiers"
+        {
+            "battlebeyond_modifier_generate_gold"
+            {
+                "Passive"                       "1"
+                "Attribute"                     "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+                
+                "ThinkInterval"                     "2"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"                            "buildings/goldmine/init.lua"
+                        "Function"                              "BattleBeyond_generateGold"
+                        "Modifier"                              "battlebeyond_modifier_generate_gold"
+                    }
                 }
             }
         }

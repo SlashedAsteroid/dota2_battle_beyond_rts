@@ -7,7 +7,7 @@ function Precache( context )
     PrecacheResource( "model_folder", "models/particle", context )
     PrecacheResource( "model_folder", "models/heroes/dragon_knight", context )
     PrecacheResource( "model_folder", "models/heroes/windrunner", context )
-    
+    PrecacheResource( "model", "models/error.vmdl", context )
 end
 
 function Activate()

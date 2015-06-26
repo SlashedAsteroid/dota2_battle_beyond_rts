@@ -12,7 +12,6 @@ function BattleBeyond_setUpgradeAura( event )
         caster:AddAbility( newability )
         BattleBeyond_setAbilityLevel( caster, newability, 1 )
     end
-    caster:SetModel( caster.Model )
 end
 
 function BattleBeyond_setAbilityLevel( caster, ability_name, level )

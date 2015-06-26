@@ -73,9 +73,10 @@
         "Level"                         "1"
         "HealthBarOffset"               "140"
 		
-        "Ability1"                      "battlebeyond_ability_unit_create_barracks"
-        "Ability2"                      "battlebeyond_ability_unit_create_armory"
-        "Ability3"                      "battlebeyond_ability_unit_create_seige_workshop"
+        "Ability1"                      "battlebeyond_ability_unit_create_gold_mine"
+        "Ability2"                      "battlebeyond_ability_unit_create_barracks"
+        "Ability3"                      "battlebeyond_ability_unit_create_armory"
+        "Ability4"                      "battlebeyond_ability_unit_create_seige_workshop"
 		
         "ArmorPhysical"                 "0"
 
@@ -209,12 +210,11 @@
 			"DisableClumpingBehavior"	"1"
 			"AttachWearables"
 			{
-				"Wearable1"		{	"ItemDef"		"63"		}
-				"Wearable2"		{	"ItemDef"		"64"		}
-				"Wearable3" 	{	"ItemDef"		"65"		}
-				"Wearable4"		{	"ItemDef"		"66"		}
-				"Wearable5"		{	"ItemDef"		"67"		}
-				"Wearable6"		{	"ItemDef"		"68"		}
+				"Wearable1"		{	"ItemDef"		"21"		}
+				"Wearable2"		{	"ItemDef"		"22"		}
+				"Wearable3" 	{	"ItemDef"		"23"		}
+				"Wearable4"		{	"ItemDef"		"24"		}
+				"Wearable5"		{	"ItemDef"		"25"		}
 			}
 		}
 	}
